@@ -13,6 +13,12 @@ def test_calcular_media_usa_a_quantidade_real_de_notas():
 
     assert aluno.calcular_media() == pytest.approx(9.0)
 
+
+def test_situacao_aprova_quando_media_eh_exatamente_seis():
+    aluno = Aluno(nome="Bruno", notas=[6, 6, 6, 6], faltas=0)
+
+    assert aluno.situacao() == "Aprovado"
+
 # =============================================================
 # PARTE 2 — Implemente com TDD
 # Siga o ciclo: 🔴 escreva o teste → 🟢 implemente → 🟡 refatore
