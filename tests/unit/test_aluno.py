@@ -8,7 +8,10 @@ from aluno.aluno import Aluno
 # Escreva um teste para cada bug descrito no guia da atividade.
 # =============================================================
 
-#
+def test_calcular_media_usa_a_quantidade_real_de_notas():
+    aluno = Aluno(nome="Ana", notas=[10, 8], faltas=0)
+
+    assert aluno.calcular_media() == pytest.approx(9.0)
 
 # =============================================================
 # PARTE 2 — Implemente com TDD
