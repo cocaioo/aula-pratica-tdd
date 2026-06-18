@@ -1,3 +1,7 @@
+def contar_aprovados(lista_de_alunos: list) -> int:
+    return sum(aluno.situacao() == "Aprovado" for aluno in lista_de_alunos)
+
+
 class Aluno:
     def __init__(self, nome: str, notas: list, faltas: int = 0):
         self.nome = nome
@@ -11,6 +15,17 @@ class Aluno:
         if self.calcular_media() >= 6.0:
             return "Aprovado"
         return "Reprovado"
+
+    def situacao_final(self, total_aulas: int) -> str:
+        if self.faltas / total_aulas > 0.25:
+            return "Reprovado por falta"
+        if self.calcular_media() >= 6.0:
+            return "Aprovado"
+        return "Reprovado por nota"
+
+    def enviar_boletim(self, email_service) -> None:
+        if self.situacao() == "Reprovado":
+            email_service(self.nome, self.calcular_media())
 
     def maior_nota(self) -> float:
         return max(self.notas)
