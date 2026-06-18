@@ -1,3 +1,7 @@
+def contar_aprovados(lista_de_alunos: list) -> int:
+    return sum(aluno.situacao() == "Aprovado" for aluno in lista_de_alunos)
+
+
 class Aluno:
     def __init__(self, nome: str, notas: list, faltas: int = 0):
         self.nome = nome
