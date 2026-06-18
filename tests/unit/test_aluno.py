@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import MagicMock
-from aluno.aluno import Aluno
+from aluno.aluno import Aluno, contar_aprovados
 
 
 # =============================================================
@@ -38,6 +38,21 @@ def test_calcular_media_arredondada_arredonda_o_valor_da_media():
 
 # Requisito 1 — contar_aprovados(lista_de_alunos) -> int
 # Escreva os testes ANTES de implementar a função
+
+def test_contar_aprovados_quando_todos_estao_aprovados(aluno_aprovado):
+    assert contar_aprovados([aluno_aprovado, aluno_aprovado]) == 2
+
+
+def test_contar_aprovados_quando_todos_estao_reprovados(aluno_reprovado):
+    assert contar_aprovados([aluno_reprovado, aluno_reprovado]) == 0
+
+
+def test_contar_aprovados_quando_lista_e_mista(aluno_aprovado, aluno_reprovado):
+    assert contar_aprovados([aluno_aprovado, aluno_reprovado]) == 1
+
+
+def test_contar_aprovados_quando_lista_e_vazia():
+    assert contar_aprovados([]) == 0
 
 
 # Requisito 2 — situacao_final(total_aulas) -> str
